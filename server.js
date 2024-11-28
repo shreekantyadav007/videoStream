@@ -6,7 +6,9 @@ const path = require("path");
 
 app.use(express.json());
 app.use(express.static("public"));
-
+app.get("/", (req, res) => {
+  res.send('Welcome to video streaming app');
+})
 app.get("/video", (req, res) => {
   const videoFile = req.query.file;
   // Validate that a file is provided
