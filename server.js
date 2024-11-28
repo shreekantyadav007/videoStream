@@ -9,14 +9,12 @@ app.use(express.static("public"));
 
 app.get("/video", (req, res) => {
   const videoFile = req.query.file;
-
   // Validate that a file is provided
   if (!videoFile) {
     return res.status(400).json({ error: "Missing file query parameter" });
   }
-
   // Build the full path to the video file
-  const videoPath = path.join(__dirname, "videos", videoFile);
+  const videoPath = `public/videos/${videoFile}`;
   //res.send(videoPath);
   // Check if the file exists
   if (!fs.existsSync(videoPath)) {
